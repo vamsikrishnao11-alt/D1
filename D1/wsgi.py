@@ -1,16 +1,53 @@
-"""
-WSGI config for D1 project.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vk1pooj</title>
+    <style>
+        *{
+            text-align: center;
+        }
+    button{
+        border-radius: 40%;
+        background-color: red;
+        color: white;
+        padding: 50px;
+        font-size: 50px;
+    }
+    #k{
+        font-size: 50px;
+    }
+    </style>
+</head>
+<body>
+    <h1 style="text-decoration: underline;">CART</h1>
+    <div >
+            <button onclick="d()">
+                -
+            </button>
+            <span id="k"></span>
+    
+            <button onclick="i()"> +</button>
+    </div>
+<script>
 
-It exposes the WSGI callable as a module-level variable named ``application``.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/5.1/howto/deployment/wsgi/
-"""
-
-import os
-
-from django.core.wsgi import get_wsgi_application
-
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'D1.settings')
-
-application = get_wsgi_application()
+        let v=document.getElementById("k");
+        let p=0;//initially it is zero 
+        function i(){
+            p++;//p=p+1 then p=1 , p=2,.............soon 
+            v.textContent=p;//here change happens
+        }
+        function d(){
+           if (p>1){
+            p--;
+            v.textContent=p;
+           }
+           else {
+            p=0;
+            v.textContent=" ";
+        };
+        }
+</script>
+</body>
+</html>
