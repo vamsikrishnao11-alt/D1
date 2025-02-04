@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pooj kkkkk</title>
+    <style>
+        *{
+            text-align: center;
+        }
+    button{
+        border-radius: 40%;
+        background-color: red;
+        color: white;
+        padding: 50px;
+        font-size: 50px;
+    }
+    #k{
+        font-size: 50px;
+    }
+    </style>
+</head>
+<body>
+    <h1 style="text-decoration: underline;">Total:<span id="m"> </span></h1>
+
+    <br>
+    <div >
+            <button onclick="d()">
+                -
+            </button>
+            <span id="k"></span>
+    
+            <button onclick="i()"> +</button>
+    </div>
+<script>
+
+        let v=document.getElementById("k");
+        let u=document.getElementById("m");
+        let p=0;//initially it is zero 
+        function i(){
+            if (p<30){
+            p++;//p=p+1 then p=1 , p=2,.............soon 
+            v.textContent=p;//here change happens
+            u.textContent=p;//here change happens
+            }
+            else {p=30;
+v.textContent=30;
+u.textContent=30;
+            }
+        }
+        function d(){
+           if (p>1){
+            p--;
+            v.textContent=p;
+            u.textContent=p;
+           }
+           else {
+            p=0;
+            v.textContent=" ";
+            u.textContent=" ";
+        }
+        }
+</script>
+</body>
+</html>
