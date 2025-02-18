@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>poojitha-darling-vamsi-bangaram</title>
+    <link rel="stylesheet" href="../css html/bootstrap/bootstrap-5.3.3-dist/css/bootstrap.rtl.min.css">
+<style>
+    img{
+        height: 100px;
+        width: 100px;
+    }
+</style>
+</head>
+
+<body >
+    <nav class="vk text-light bg-dark"><h1>🛒Amazon</h1></nav>
+    <div class="container-fluid col-12 text-center" id="vk" >
+        <div class="row m-auto column-gap-lg-5">
+
+        </div>
+
+    </div>
+
+
+    
+    <br>
+    <div id="okk">
+        <div class="row column-gap-2">
+
+            
+
+        </div>
+
+    </div>
+
+    
+
+
+
+</div>
+
+    <script >
+
+//remember one thing vamsi krishna,.... very very very important concept - shallow copy and deep copy - if you don't understand the shallow copy and deep copy you cannot understand what happend inside the code(object properties memory changes) 
+let it1={id:11,imgUrl:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWRZv9MYxeH2Pewg94T4oFNAbGz54Ps3czn2aO86E6Ju7J9-BMjWCK_nAuHxAMLRca2xc&usqp=CAU",name:"apple",price:80000,qty:1}
+let it2={id:12,imgUrl:"https://powermaccenter.com/cdn/shop/files/iPhone_16_Ultramarine_PDP_Image_Position_1__en-WW.jpg?v=1726236084&width=1920",name:"samsung",price:45000,qty:1};
+let it3={id:13,imgUrl:"https://i0.wp.com/navicom.tn/wp-content/uploads/2024/11/iphone-16-128gb-vert.webp?fit=800%2C800&ssl=1",name:"oppo",price:75000,qty:1};
+let it4={id:14,imgUrl:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXLOR208QdW7p_5u8Y8RbLC3pg2Tp9rR08EuMvfvTLep1yhsfTG_PytKxphvcpAppEQdc&usqp=CAU",name:"vivo",price:50000,qty:1};
+let it5={id:15,imgUrl:"https://images.unsplash.com/photo-1622434641406-a158123450f9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHdhdGNofGVufDB8fDB8fHww",name:"FOSSIL",price:75000,qty:1};
+
+let items=[it1,it2,it3,it4,it5];//array kvk
+
+if (localStorage.getItem("items")) items=JSON.parse(localStorage.getItem("items"));
+
+
+
+
+
+
+let pData = document.getElementById('vk').getElementsByClassName('row')[0];
+let listData = document.getElementById('okk').getElementsByClassName('row')[0];
+
+
+
+function displayItems(p){ //item reference and p reference is same
+    if (p.length==0)return;
+    let eachProduct='';
+    
+    for(let item of p){
+        eachProduct+=`
+            <div class="card col-2">
+                <div class="card-header">
+                    <img src="${item.imgUrl}"  alt="">
+                </div>
+                <div class="card-body">
+                    <h4>${item.name}</h4>
+                    <h3 class="total">${item.price* item.qty}&#8377</h3>
+                    <h4>
+                        <button onclick="dsc(${item.id})" class="min">➖</button> 
+                        <span class="count">${item.qty }</span>
+                        <button onclick="inc(${item.id})" class="max">➕</button>
+                    </h4>
+                    
+                </div>
+
+            </div>
+
+        `;
+
+        
+        
+        
+    }
+    pData.innerHTML=eachProduct;
+    
+}
+
+
+
+
+displayItems(items);
+
+
+
+
+
+function ip(p,pooj){
+    if (p.length==0)return;
+    let eachList='';
+    for(let item of p){
+        if (item.id==pooj){
+            eachList+=`
+            
+            <div class="card bg-black text-center w-25 m-auto  rounded-5">
+                <h1 class="text-center text-danger text-decoration-underline ">Details</h1>
+                <div class="card-header">
+                    <img src="${item.imgUrl}"  alt="">
+                </div>
+                <div class="card-body text-success ">
+                    <h4 class="card-body text-light ">${item.name}</h4>
+                    <h3 >${item.price* item.qty}&#8377</h3>
+                    <h4>
+                        <span class="text-light">${item.qty }</span>     
+                    </h4>
+                    
+                </div>
+
+            </div>`;
+        }
+    
+}
+listData.innerHTML=eachList;
+}
+
+
+
+
+//increment function kvk
+function inc(pooj){// when i tap on the increment button[onClick attribute is activated and it calls the particular or specified inc function],....i'm accessing that particular product id [example:11,12,13,14] here pooj=item.id  and pooj is passed as an argument
+let up=items.map((vk)=>{//in the vk object i had an id propety if individual 
+    if (vk.id==pooj) return {...vk,qty:++vk.qty};
+    else return vk;
+})// map is an method and map function also known as higher order function and arrow fuction is also known as callback function
+items=up;
+localStorage.setItem("items",JSON.stringify(items));
+displayItems(up);
+ip(up,pooj);
+
+}
+//decrement function kvk
+function dsc(pooj){// when i tap on the decrement button[onClick attribute is activated and it calls the particular or specified inc function],....i'm accessing that particular product id [example:11,12,13,14] here pooj=item.id  and pooj is passed as an argument
+let up=items.map((vk)=>{//in the vk object i had an id propety if individual objects (products)
+    if (vk.id==pooj) return {...vk,qty:(vk.qty>1?--vk.qty:1)}; //map function is used for iteration perpose,if passed parameter id is equal to the (extracted property from the iterated object vk)object property then only enter into the condition,first spread the object & returning the spreaded properties of the object based on the condition and that should be stored in new object not in original object(array is different [] & object is different {}, array functionality is different and object functionality is different)
+  else return vk;
+    
+});
+items=up;
+localStorage.setItem("items",JSON.stringify(items));
+displayItems(up);
+ip(up,pooj);
+
+}
+
+
+    </script>
+</body>
+</html>
