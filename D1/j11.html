@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pjvk--stop-Watch</title>
+    <link rel="stylesheet" href="../css html/bootstrap/bootstrap-5.3.3-dist/css/bootstrap.rtl.min.css">
+<style>
+    
+    body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;  
+    align-items: center;
+    padding: 100px;     
+}
+
+.container-fluid{
+    padding: 100px;  
+    border-radius: 10%;
+}
+.sss,.b{
+    font-size: 50px;
+    color: white;
+}
+</style>
+</head>
+<body>
+   <div class="c">
+    <div class="container-fluid  bg-primary text-center">
+        <h1 >STOP WATCH</h1>
+        <div class="sss">
+            <h1 class="btn btn-dark">RANGE : 12 HOURS</h1>
+            <br>
+            <span id="hr" >00</span>:<span id="min" >00</span>:<span id="sec">00</span>
+        </div>
+        <div >
+            <button class="btn btn-success sta">START</button>
+            <button class="btn btn-danger sto">STOP</button>
+            <button class="btn btn-warning cc">CLEAR</button>
+        </div>
+    </div>
+   </div>
+<script>
+    let hR=document.querySelector("#hr");
+    let miN=document.querySelector("#min");
+    let seC=document.querySelector("#sec");
+    let stA=document.querySelector(".sta");
+    let stO=document.querySelector(".sto");
+    let clR=document.querySelector(".cc");
+    let min=0;
+    let sec=0;
+    let h=0;
+    let id;
+    function v(){
+        miN.innerHTML=(min>9?min:"0" + min)
+        seC.innerHTML=(sec>9?sec:"0" + sec)
+        hR.innerHTML=(h>9?h:"0" + h)
+    };
+    stA.addEventListener("click",function n(){
+        if (!id){
+            
+        id=setInterval(()=>{ 
+        if (sec<59){
+        sec++;
+        v();
+       }
+       else{
+        sec=0;
+        min++;
+        if(min==59){
+            h++;
+            min=0;          
+        }
+        else if(h==12){
+            h=0;
+            min=0 
+            sec=0;         
+        };
+        v();
+       }
+    },0.00001); 
+
+
+        }  
+    }
+);
+
+
+stO.addEventListener("click",function(){
+            clearInterval(id);
+            id=null;
+})
+
+
+clR.addEventListener('click',function(){
+            clearInterval(id);
+            min=0;
+            sec=0;
+            h=0;
+            id=null;
+            v();           
+        })
+</script>
+</body>
+</html>
