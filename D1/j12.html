@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>vkpjBangaram</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        .container-fluid{
+            
+            background-color: rgb(0, 0, 0);
+            width: 500px;
+            position: relative;
+            top: 100px;
+            left: auto;
+            border-radius: 10%;
+
+
+        }
+        .as{
+            background-color: rgb(255, 255, 255);
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            height: 100px;
+            padding: 3px;
+            gap: 500px;
+            border-radius: 10px;
+            overflow: hidden;
+          
+            word-break: break-all;
+        }
+        .ap{
+            background-color: rgb(255, 255, 255);
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            height: 100px;
+            padding: 3px;
+            gap: 500px;
+            border-radius: 10px;
+            overflow: hidden;
+            word-break: break-all;
+        }
+        .as,.ap{
+            border:5px solid ;
+            background-image: linear-gradient(45deg,red,orange,yellow);
+        }
+        .a>button{
+            border-radius: 60%;
+            
+            color: red;
+            font-size: 20px;
+            background-image: linear-gradient(45deg,red,orange,yellow);
+        }
+        .container1>a{
+            row-gap: 100px;
+        }
+        .op{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container-fluid   ">
+        <br>
+        <h1 style="text-align: center; color: orange;"> <u>CALCULATOR</u> </h1>
+        <div class="op c4">
+            <div class="row-col gap-2 ">
+                <div class="as  col-4">
+    
+                </div >
+            </div>
+            <div class="row-col gap-2 ">
+                <div class="ap  col-4">
+    
+                </div >
+            </div>
+            <br>
+            <div class="a row-col gap-2">
+                <button onclick="divi()" class="col-1  ">/</button>
+                <button onclick="mul()" class="col-1 ">*</button>
+                <button onclick="subs()"class="col-1 ">-</button>
+                <button onclick="addi()"class="col-1">+</button>
+            </div>
+            <br>
+            <div class="a row-col gap-2">
+                <button onclick="seven()"class="col-1 rounded">7</button>
+                <button onclick="eight()"class="col-1 rounded">8</button>
+                <button onclick="nine()"class="col-1 rounded">9</button>
+                <button onclick="zero()"class="col-1 ">0</button>
+            </div>
+            <br>
+            <div class="a row-col gap-2">
+                <button onclick="four()"class="col-1 rounded">4</button>
+                <button onclick="five()"class="col-1 rounded">5</button>
+                <button onclick="six()"class="col-1 rounded">6</button>
+                <button onclick="equal()"class="col-1 ">=</button>
+            </div>
+            <br>
+            <div class="a row-col gap-2">
+                <button onclick="one()"class="col-1 rounded">1</button>
+                <button onclick="two()"class="col-1 rounded">2</button>
+                <button onclick="three()"class="col-1 rounded">3</button>
+                <button onclick="cc()"class="col-1 ">c</button>
+                
+            </div>
+            <br>
+            <div class="a card-footer row-col gap-2">
+                <button onclick="xox()"class='col-4 rounded-pill'>x</button>
+            </div>
+            <br>
+
+        </div>
+        
+
+    </div>
+
+    <script>
+        let disp=document.querySelector('.as');
+        let val=document.querySelector('.ap');
+        let kkk='';
+        let op="";
+        
+        disp.textContent=kkk;
+        function divi(){
+          
+            op=kkk+"/";
+            kkk=op;
+            
+            disp.textContent=op;     
+
+        }
+       
+        function mul(){
+          
+            op=kkk+"*";
+            kkk=op;
+         
+            disp.textContent=op;
+                   
+
+
+
+        }
+     
+        function addi(){
+          op=kkk+"+";
+            kkk=op;
+            
+            disp.textContent=op;
+            
+
+
+        }
+     
+        function subs(){
+        
+            op=kkk+"-";
+            kkk=op;
+           
+            disp.textContent=op;
+            
+            
+        
+          
+
+        }
+
+function xox(){
+   // kkk = kkk.slice(0, -1);
+    kkk = kkk.slice(0, kkk.length-1);
+    disp.textContent=kkk;
+    equal()
+ 
+
+}
+
+
+        function seven(){
+            kkk+='7';
+            disp.textContent=kkk;
+            
+            equal()
+
+        }
+        function eight(){
+            kkk+='8';
+            disp.textContent=kkk;
+            equal()
+
+        }
+        function nine(){
+            kkk+='9';
+            disp.textContent=kkk;
+            
+            equal()
+
+        }
+        function zero(){
+            kkk+='0';
+            disp.textContent=kkk;
+           
+            equal()
+
+        }
+        function four(){
+            kkk+='4';
+            disp.textContent=kkk;
+           
+            equal()
+
+        }
+        function five(){
+            kkk+='5';
+            disp.textContent=kkk;
+            
+            equal()
+
+        }
+        function six(){
+            kkk+='6';
+            disp.textContent=kkk;
+           
+            equal()
+
+        }
+        
+        function equal(){
+            try{
+                let result=eval(kkk) ;//here i'm evaluating the required expression vamsikrishnak
+                val.textContent=result;
+
+            }
+            catch(error){
+                result='ERROR';//WHEN STRING CONTAINS '123+56/////' OR '123++33' OR '987--' SUCH TYPE OF ERRORS POOJ
+                val.textContent=result ;
+                
+            }
+           
+
+        }
+
+        function one(){
+            kkk+='1';
+            disp.textContent=kkk;
+            
+            equal()
+
+        }
+        function two(){
+            kkk+='2';
+            disp.textContent=kkk;
+            
+            equal()
+
+        }
+        function three(){
+            kkk+='3';
+            disp.textContent=kkk;
+           
+            equal()
+
+        }
+        function cc(){
+
+            kkk="";
+            disp.textContent=kkk;
+            val.textContent=kkk;
+        }
+
+
+
+    </script>
+</body>
+</html>
